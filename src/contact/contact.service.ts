@@ -1,27 +1,28 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Contact } from '../entities/contact.entity';
-import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 
 @Injectable()
 export class ContactService {
-  constructor(
-    @InjectRepository(Contact) private contactRepository: Repository<Contact>,
-  ) {}
-
-  async create(contact: Contact): Promise<Contact> {
-    return await this.contactRepository.save(contact);
-  }
-
   async readAll(): Promise<Contact[]> {
-    return await this.contactRepository.find();
-  }
-
-  async update(contact: Contact): Promise<UpdateResult> {
-    return await this.contactRepository.update(contact.id, contact);
-  }
-
-  async delete(id): Promise<DeleteResult> {
-    return await this.contactRepository.delete(id);
+    return [
+      {
+        id: 1,
+        name: 'CL 001',
+        title: 'Developer',
+        email: 'cl001@yopmail.com',
+        phone: '0782888624',
+        address: '1445 Midway Road',
+        city: 'Rogers',
+      },
+      {
+        id: 5,
+        name: 'CL 002',
+        title: 'Manager',
+        email: 'cl002@yopmail.com',
+        phone: '0782880000',
+        address: '123 Rue du lac',
+        city: 'Paris',
+      },
+    ];
   }
 }

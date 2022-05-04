@@ -1,0 +1,28 @@
+{
+  "name": "Jamstack backend",
+  "repository": "https://github.com/moussa-b/jamstack-backend",
+  "logo": "https://nestjs.com/img/logo-small.svg",
+  "success_url": "/",
+  "scripts":{
+    "predeploy": "npm install && npm run build"
+  },
+  "env": {
+    "NODE_ENV": {
+      "description": "Environment [production/development]",
+      "value": "production"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1x"
+    }
+  },
+  "image": "heroku/nodejs",
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
