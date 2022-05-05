@@ -10,11 +10,10 @@ import { ContactsController } from './contacts/contacts.controller';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      database: 'nestngdb',
-      username: 'nestuser',
-      password: 'nestpassword',
+      url: process.env.DATABASE_URL || 'postgres://nestuser:nestpassword@localhost/nestngdb',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
+      ...(process.env.DATABASE_URL ? { ssl: { rejectUnauthorized: false } } : {}),
     }),
     TypeOrmModule.forFeature([Contact]),
   ],
